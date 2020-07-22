@@ -1,1 +1,1 @@
-# VMIX-Scoreboard-Application-Main-
+# VMIX Scoreboard Application (Main)
