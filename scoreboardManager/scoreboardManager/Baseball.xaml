@@ -1,0 +1,211 @@
+﻿<Window x:Class="scoreboardManager.Baseball"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:scoreboardManager"
+        mc:Ignorable="d"
+        Title="ScoreMan | Baseball" Height="553.82" Width="419.308" WindowStartupLocation="Manual" Background="White" ResizeMode="NoResize" Icon="pack://application:,,,/Resources/Scoreman-Logo-mini.png">
+    <Grid Margin="0,0,-6.34,1.211">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="77*"/>
+            <ColumnDefinition Width="206*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Name="Team1_Box"  Grid.Column="1" Fill="White" HorizontalAlignment="Left" Height="192.042" Margin="-0.17,0.384,0,0" VerticalAlignment="Top" Width="480" Grid.ColumnSpan="2"/>
+        <ComboBox Name="Team1_Dropdown" IsTextSearchEnabled="True" Grid.Column="1" HorizontalAlignment="Left" Margin="9.83,10.378,0,0" VerticalAlignment="Top" Width="205.516" Grid.ColumnSpan="2" RenderTransformOrigin="0.517,-0.594" BorderBrush="White" SelectionChanged="Dropdown1_SelectionChanged">
+            <ComboBox.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0"/>
+            </ComboBox.Effect>
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <Rectangle x:Name="Team2_Box"  Grid.Column="1" Fill="White" HorizontalAlignment="Left" Height="192.042" Margin="-0.17,191.187,0,0" VerticalAlignment="Top" Width="480" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="Team2_Dropdown" IsTextSearchEnabled="True" Grid.Column="1" HorizontalAlignment="Left" Margin="9.83,201.18,0,0" VerticalAlignment="Top" Width="205.516" Grid.ColumnSpan="2" RenderTransformOrigin="0.517,-0.594" BorderBrush="White" SelectionChanged="Dropdown2_SelectionChanged">
+            <ComboBox.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0"/>
+            </ComboBox.Effect>
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <Label Name="Team1_Score" Grid.ColumnSpan="3" Content="0" HorizontalAlignment="Left" Margin="9.83,43.033,0,0" VerticalAlignment="Top" Height="138.26" Width="138.26" Background="#FFB0B0B0" FontSize="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" BorderBrush="Black" Padding="5">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0"/>
+            </Label.Effect>
+        </Label>
+        <Label x:Name="Team2_Score" Grid.ColumnSpan="3" Content="0" HorizontalAlignment="Left" Margin="9.83,233.516,0,0" VerticalAlignment="Top" Height="138.26" Width="138.26" Background="#FFB8B8B8" FontSize="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" Padding="5">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0"/>
+            </Label.Effect>
+        </Label>
+        <ComboBox Name="Innings" Grid.ColumnSpan="2" Margin="10,422.49,0,0" VerticalAlignment="Top" Height="45.905" FontSize="20" VerticalContentAlignment="Center" Background="White" BorderBrush="#3F000000" SelectedIndex="0" Foreground="Black" Width="89.144" HorizontalAlignment="Left" SelectionChanged="Innings_SelectionChanged">
+            <ListBoxItem Content="1st"/>
+            <ListBoxItem Content="2nd"/>
+            <ListBoxItem Content="3rd"/>
+            <ListBoxItem Content="4th"/>
+            <ListBoxItem Content="5th"/>
+            <ListBoxItem Content="6th"/>
+            <ListBoxItem Content="7th"/>
+            <ListBoxItem Content="8th"/>
+            <ListBoxItem Content="9th"/>
+            <ListBoxItem Content="10th"/>
+        </ComboBox>
+        <Label Name="Outs" Grid.Column="1" HorizontalAlignment="Left" Height="45.905" Margin="104.144,422.79,0,0" Content="0" VerticalAlignment="Top" Width="58.314" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" BorderBrush="#3F000000" Background="White" Grid.ColumnSpan="2" MouseDoubleClick="Outs_TextChanged" Padding="0" BorderThickness="1" ToolTip="Outs, double click to change."/>
+        <RadioButton Name="Team2_Pos" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="16.409,297.253,0,0" VerticalAlignment="Top" BorderBrush="White" Click="Team2_Pos_Checked" ToolTip="Team 2 Posession, click to change."/>
+        <RadioButton Name="Team1_Pos" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="16.409,104.78,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="14" Width="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled" BorderBrush="White" Click="Team1_Pos_Checked" IsChecked="True" ToolTip="Team 1 Posession, click to change."/>
+        <Button Name="PlayAds"  Content="Play Ads" Grid.Column="1" HorizontalAlignment="Left" Margin="9.334,473.395,0,0" VerticalAlignment="Top" Width="268.932" Height="45.705" FontSize="20" BorderBrush="#3F000000" Background="White" Grid.ColumnSpan="2" Click="PlayAds_Click" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"/>
+        <Rectangle Name="Team1_Scorebox" Grid.Column="2" HorizontalAlignment="Left" Height="137.236" Margin="43.34,44.057,0,0" VerticalAlignment="Top" Width="100.143" Fill="White">
+            <Rectangle.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <Button x:Name ="team1_add1" Content="+1" Grid.Column="2" HorizontalAlignment="Left" Margin="43.34,44.057,0,0" VerticalAlignment="Top" Width="99.199" Height="69.13" Foreground="White" FontSize="24" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="team1_add1_Click" ClipToBounds="True" Padding="0" Background="#00DDDDDD" BorderBrush="#00707070" MouseEnter="Text_MouseEnter" MouseLeave="Text_MouseLeave"/>
+        <Button x:Name ="team1_sub1" Content="-1" Grid.Column="2" HorizontalAlignment="Left" Margin="43.34,112.163,0,0" VerticalAlignment="Top" Width="100.143" Height="69.13" Foreground="White" FontSize="24" Click="team1_sub1_Click" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ClipToBounds="True" Background="#00DDDDDF" MouseEnter="Text_MouseEnter" MouseLeave="Text_MouseLeave"/>
+        <Rectangle Name="ImageBoxT1" Grid.Column="2" Fill="White" HorizontalAlignment="Left" Height="137.236" Margin="152.733,44.057,0,0" VerticalAlignment="Top" Width="137.236">
+            <Rectangle.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <Image x:Name="Team1_Icon" Grid.Column="2" HorizontalAlignment="Left" Height="100" Margin="172.159,63.483,0,0" VerticalAlignment="Top" Width="100">
+        </Image>
+        <Rectangle x:Name="Team2_Scorebox"  Grid.Column="2" Fill="White" HorizontalAlignment="Left" Height="138.26" Margin="43.34,234.183,0,0" VerticalAlignment="Top" Width="99.199">
+            <Rectangle.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <Rectangle x:Name="Team2_IconBox"  Grid.Column="2" Fill="White" HorizontalAlignment="Left" Height="138.26" Margin="151.709,233.516,0,0" VerticalAlignment="Top" Width="138.26">
+            <Rectangle.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <Image x:Name="Team2_Icon" Grid.Column="2" HorizontalAlignment="Left" Height="100" Margin="173.136,255.647,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name ="team2_add1" Content="+1" Grid.Column="2" HorizontalAlignment="Left" Margin="43.069,234.183,0,0" VerticalAlignment="Top" Width="99.449" Height="69.13" Click="team2_add1_Click" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Background="Transparent" Foreground="White" FontSize="24" MouseEnter="Text_MouseEnter" MouseLeave="Text_MouseLeave"/>
+        <Button x:Name ="team2_sub1" Content="-1" Grid.Column="2" HorizontalAlignment="Left" Margin="43.34,302.646,0,0" VerticalAlignment="Top" Width="99.199" Height="69.13" Click="team2_sub1_Click" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Background="Transparent" Foreground="White" FontSize="24" RenderTransformOrigin="0.465,0.506" MouseEnter="Text_MouseEnter" MouseLeave="Text_MouseLeave"/>
+        <Rectangle x:Name="Team1_RecordBox" Grid.Column="2" Fill="White" HorizontalAlignment="Left" Height="22" Margin="106.346,10.378,0,0" VerticalAlignment="Top" Width="71.319">
+            <Rectangle.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <Label Name="Team1_Record_Wins" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="105.346,10.378,0,0" Content="0" VerticalAlignment="Top" Width="23" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MouseDoubleClick="Team1_Record_Wins_TextChanged" Background="White" Padding="0" BorderThickness="1" ToolTip="Record Wins, double click to change."/>
+        <Label Name="Team1_Record_Losses" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="154.665,9.878,0,0" Content="0" VerticalAlignment="Top" Width="23" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MouseDoubleClick="Team1_Record_Losses_TextChanged" Background="White" Padding="0" BorderThickness="1" ToolTip="Record Losses, double click to change."/>
+        <Label Content="-" Grid.Column="2" HorizontalAlignment="Left" Margin="128.346,10.378,0,0" VerticalAlignment="Top" Height="22.622" Width="26.319" HorizontalContentAlignment="Center" Foreground="White"/>
+        <Rectangle x:Name="Team2_RecordBox" Grid.Column="2" Fill="White" HorizontalAlignment="Left" Height="22" Margin="106.346,201.18,0,0" VerticalAlignment="Top" Width="71.319">
+            <Rectangle.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <Label Name="Team2_Record_Wins" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="105.346,200.68,0,0" Content="0" VerticalAlignment="Top" Width="23" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MouseDoubleClick="Team2_Record_Wins_TextChanged" Background="White" Padding="0" BorderThickness="1" ToolTip="Record Wins, double click to change."/>
+        <Label Name="Team2_Record_Losses" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="154.665,200.68,0,0" Content="0" VerticalAlignment="Top" Width="23" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MouseDoubleClick="Team2_Record_Losses_TextChanged" Background="White" Padding="0" BorderThickness="1" ToolTip="Record Losses, double click to change."/>
+        <Label Content="-" Grid.Column="2" HorizontalAlignment="Left" Margin="128.346,201.18,0,0" VerticalAlignment="Top" Height="22.622" Width="26.319" HorizontalContentAlignment="Center" Foreground="White"/>
+        <Label Grid.ColumnSpan="2" Content="INNINGS" HorizontalAlignment="Left" Margin="9.83,384.085,0,0" VerticalAlignment="Top" Height="37.705" Width="89.314" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="White" BorderThickness="1" Padding="0,5"/>
+        <Label Grid.ColumnSpan="3" Content="OUTS" HorizontalAlignment="Left" Margin="104.144,384.085,0,0" VerticalAlignment="Top" Height="37.705" Width="58.314" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="White" BorderThickness="1" Padding="0,5"/>
+        <Label Name="Count" Grid.Column="2" HorizontalAlignment="Left" Height="45.905" Margin="53.458,422.79,0,0" Content="0" VerticalAlignment="Top" Width="45.905" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" BorderBrush="#3F000000" Background="White" MouseDoubleClick="Count_TextChanged" BorderThickness="1" Padding="0" ToolTip="Balls, double click to change."/>
+        <Label Content="COUNT" HorizontalAlignment="Left" Margin="53.458,384.085,0,0" VerticalAlignment="Top" Height="37.705" Width="108.808" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="White" BorderThickness="1" Grid.Column="2" Padding="0,5"/>
+        <Rectangle Grid.Column="2" Fill="White" HorizontalAlignment="Left" Height="126.515" Margin="172.042,392.585,0,0" VerticalAlignment="Top" Width="117.927" Stroke="#3F000000"/>
+        <Rectangle Grid.Column="2" Fill="Black" HorizontalAlignment="Left" Height="22.775" Margin="184.999,445.205,0,0" VerticalAlignment="Top" Width="22.775" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-47.212"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.Column="2" Fill="Black" HorizontalAlignment="Left" Height="22.775" Margin="255.499,445.205,0,0" VerticalAlignment="Top" Width="22.775" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-47.212"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.Column="2" Fill="Black" HorizontalAlignment="Left" Height="22.775" Margin="218.999,409.205,0,0" VerticalAlignment="Top" Width="22.775" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-47.212"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.Column="2" Fill="Black" HorizontalAlignment="Left" Height="22.775" Margin="220.999,476.705,0,0" VerticalAlignment="Top" Width="22.775" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-47.212"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.Column="2" Fill="Black" HorizontalAlignment="Left" Height="30.318" Margin="211.639,458.399,0,0" VerticalAlignment="Top" Width="5.612" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-47.212"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.Column="2" Fill="Black" HorizontalAlignment="Left" Height="5.612" Margin="229.909,471.398,0,0" VerticalAlignment="Top" Width="38.292" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-47.212"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.Column="2" Fill="Black" HorizontalAlignment="Left" Height="5.612" Margin="195.175,433.46,0,0" VerticalAlignment="Top" Width="39.066" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-47.212"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.Column="2" Fill="Black" HorizontalAlignment="Left" Height="40.385" Margin="244.563,417.309,0,0" VerticalAlignment="Top" Width="5.612" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-47.212"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <CheckBox Name="Base4" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="188.084,449.29,0,0" VerticalAlignment="Top" ClickMode="Press" Click="CheckBox_Checked_3"/>
+        <CheckBox Name="Base3" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="221.584,412.29,0,0" VerticalAlignment="Top" ClickMode="Press" Click="CheckBox_Checked_2"/>
+        <CheckBox Name="Base2" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="258.469,448.79,0,0" VerticalAlignment="Top" ClickMode="Press" Click="CheckBox_Checked_1"/>
+        <CheckBox Name="Base1"  Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="224.084,480.195,0,0" VerticalAlignment="Top" ClickMode="Press" Click="CheckBox_Checked"/>
+        <Label Name="VisitorLabel" Content="VISITOR" Grid.Column="2" HorizontalAlignment="Left" Margin="182.665,9.878,0,0" VerticalAlignment="Top" Height="22" Width="60" Foreground="Black" Padding="5,0" VerticalContentAlignment="Center" Background="White" HorizontalContentAlignment="Center">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0"/>
+            </Label.Effect>
+        </Label>
+        <Label x:Name="HomeLabel" Content="HOME" Grid.Column="2" HorizontalAlignment="Left" Margin="182.665,201.18,0,0" VerticalAlignment="Top" Height="22" Width="60" Foreground="Black" Padding="5,0" VerticalContentAlignment="Center" Background="White" HorizontalContentAlignment="Center">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0"/>
+            </Label.Effect>
+        </Label>
+        <Label x:Name="Count_Copy" Grid.Column="2" HorizontalAlignment="Left" Height="45.905" Margin="118.361,422.79,0,0" Content="0" VerticalAlignment="Top" Width="45.905" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" BorderBrush="#3F000000" Background="White" MouseDoubleClick="Count_TextChanged" BorderThickness="1" Padding="0" ToolTip="Strikes, Double click to change."/>
+        <Label Content="-" Grid.Column="2" HorizontalAlignment="Left" Margin="99.363,419.027,0,0" VerticalAlignment="Top" Height="41" Width="18.998" Padding="0" HorizontalContentAlignment="Center" FontSize="36" VerticalContentAlignment="Bottom" Foreground="#3F000000"/>
+    </Grid>
+</Window>

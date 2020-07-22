@@ -1,0 +1,103 @@
+﻿<Window x:Class="scoreboardManager.Startup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:scoreboardManager"
+        mc:Ignorable="d"
+        Title="ScoreMan" Height="542.567" Width="675.172" WindowStartupLocation="Manual" Background="#FF919191" ResizeMode="CanMinimize" Icon="pack://application:,,,/Resources/Scoreman-Logo-mini.png">
+    <Grid Margin="0,0,-6.34,1.211">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Image Name="Logo" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="63.861" Margin="155.17,35.435,0,0" VerticalAlignment="Top" Width="364.49" Stretch="UniformToFill" RenderTransformOrigin="0.5,0.5" Source="pack://application:,,,/Resources/Scoreman Logo.png">
+        </Image>
+        <Canvas Name="Login_Screen" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="512.789" Margin="-0.17,0,0,0" VerticalAlignment="Top" Width="665.34" Visibility="Hidden" KeyDown="OnPressEnter">
+            <TextBox Name="Username" HorizontalAlignment="Center" Height="33.484" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="330.83" Grid.ColumnSpan="2" BorderBrush="#3F000000" Padding="5,2,0,0" VerticalContentAlignment="Center" FontSize="14" Cursor="IBeam" Canvas.Left="164" Canvas.Top="157.831"/>
+            <PasswordBox Name="Password" HorizontalAlignment="Left" VerticalAlignment="Top" Width="330.83" BorderBrush="#3F000000" Height="33.484" Cursor="IBeam" Canvas.Left="164.17" Canvas.Top="237.785" Padding="5,2,0,0" FontSize="14" VerticalContentAlignment="Center"/>
+            <CheckBox Name="RememberLogin" Content="Remember Me" Canvas.Left="164" Canvas.Top="301" Foreground="White" Width="168" ClickMode="Press" BorderBrush="White" FontSize="14" VerticalContentAlignment="Center" ToolTip="Scoreman will remeber your login the next time you start the application." IsChecked="True"/>
+            <Button Name="LogOn" Content="Log In" HorizontalAlignment="Left" VerticalAlignment="Top" Width="330.66" Height="38" Click="LogOn_Click" Grid.ColumnSpan="2" Background="#FF4458FB" Foreground="White" FontSize="16" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Canvas.Left="164" Canvas.Top="331" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"/>
+            <Button Name="SignUp" Content="Sign Up" HorizontalAlignment="Left" VerticalAlignment="Top" Width="330.66" Height="38" Grid.ColumnSpan="2" Background="#FF009946" Foreground="White" FontSize="16" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Canvas.Left="164" Canvas.Top="379" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"/>
+            <Label Grid.ColumnSpan="2" Content="Username:" HorizontalAlignment="Left" Margin="164.17,122.831,0,0" VerticalAlignment="Top" Height="35" Width="345.66" FontSize="16"/>
+            <Label Grid.ColumnSpan="2" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Width="345.66" FontSize="16" Canvas.Left="164.17" Canvas.Top="207.934"/>
+            <Label Grid.ColumnSpan="2" Content="I forgot my username" HorizontalAlignment="Left" Margin="164.17,188.934,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="11" Cursor="Hand" ToolTip="Forgot username? Click to recover your username"/>
+            <Label Grid.ColumnSpan="2" Content="I forgot my password" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="11" Cursor="Hand" Canvas.Left="164" Canvas.Top="271.484" ToolTip="Forgot password? Click to recover your password"/>
+        </Canvas>
+        <Canvas Name="EventID_Screen" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="512.789" Margin="-0.17,0,0,0" VerticalAlignment="Top" Width="665.34" Visibility="Hidden">
+            <TextBox Name="EventID" HorizontalAlignment="Center" Height="50.484" TextWrapping="Wrap" Text="Event ID" VerticalAlignment="Top" Width="330.66" Grid.ColumnSpan="2" BorderBrush="#3F000000" Padding="5,2,0,0" VerticalContentAlignment="Center" FontSize="18" Cursor="IBeam" Canvas.Left="164.17" Canvas.Top="172"/>
+            <Button Name="Next" Content="Next" Click="EventID_Next" HorizontalAlignment="Left" VerticalAlignment="Top" Width="330.66" Height="38" Grid.ColumnSpan="2" Background="#FF5D3DFF" BorderBrush="{x:Null}" Foreground="White" FontSize="16" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Canvas.Left="164" Canvas.Top="259" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"/>
+            <Button Name="Offline" Content="Offline" Click="EventID_Offline" HorizontalAlignment="Left" VerticalAlignment="Top" Width="330.66" Height="38" Grid.ColumnSpan="2" Background="#FFCF102D" BorderBrush="{x:Null}" Foreground="White" FontSize="16" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Canvas.Left="164" Canvas.Top="307" ToolTip="Continue to Scoreman offline, but online features like ad integration will be disabled." MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"/>
+            <Label Grid.ColumnSpan="2" Content="Whats your Event ID?" HorizontalAlignment="Left" VerticalAlignment="Top" Height="44" Width="345.66" FontSize="22" Canvas.Left="164" Canvas.Top="100" HorizontalContentAlignment="Center"/>
+            <Label Grid.ColumnSpan="2" Content="Whats an Event ID?" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Cursor="Hand" Canvas.Left="164" Canvas.Top="222.484"/>
+        </Canvas>
+        <Canvas Name="SportSelection_Screen" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="512.789" Margin="-0.17,0,0,0" VerticalAlignment="Top" Width="665.34" Visibility="Visible">
+            <Button Name="StartScoring" Content="Start Scoring!" HorizontalAlignment="Left" VerticalAlignment="Top" Width="330.66" Height="38" Grid.ColumnSpan="2" Background="#FF5D3DFF" BorderBrush="{x:Null}" Foreground="White" FontSize="16" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Canvas.Left="164" Canvas.Top="335" Click="StartScoring_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"/>
+            <Label Grid.ColumnSpan="2" Content="Pick a Sport" HorizontalAlignment="Left" VerticalAlignment="Top" Height="44" Width="345.66" FontSize="22" Canvas.Left="164" Canvas.Top="100" HorizontalContentAlignment="Center"/>
+            <Rectangle Fill="Black" Height="2" Canvas.Top="148" Width="678.34" RenderTransformOrigin="0.5,0.5" Opacity="0.25">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle Fill="Black" Height="2" Canvas.Top="305" Width="678.34" RenderTransformOrigin="0.5,0.5" Opacity="0.25">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle Height="107" Canvas.Left="272.743" Canvas.Top="169" Width="109.847" Stroke="#7F000000" StrokeThickness="2"/>
+            <Button Name="SportLeft2" Canvas.Left="74.231" Canvas.Top="169" Width="90.204" Height="107" Background="#00DDDDDD" BorderBrush="#00707070" Foreground="#00000000" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="">
+                <Image x:Name="SportLeft2_Image" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="81" VerticalAlignment="Top" Width="81" RenderTransformOrigin="0.5,0.5" Source="Resources/Football-512x512.png"/>
+            </Button>
+            <Button Name="SportLeft1" Canvas.Left="177.343" Canvas.Top="169" Width="90.205" Height="107" Background="#00DDDDDD" BorderBrush="#00707070" Foreground="#00000000" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="">
+                <Image Name="SportLeft1_Image" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="81" VerticalAlignment="Top" Width="81" RenderTransformOrigin="0.5,0.5" Source="pack://application:,,,/Resources/Football-512x512.png"/>
+            </Button>
+            <Button Name="SportCenter" Canvas.Left="282.521" Canvas.Top="169" Width="90.205" Height="107" Background="#00DDDDDD" BorderBrush="#00707070" Foreground="#00000000" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="">
+                <Image Name="SportCenter_Image" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="81" VerticalAlignment="Top" Width="81" RenderTransformOrigin="0.5,0.5" Source="pack://application:,,,/Resources/Soccer-512x512.png"/>
+            </Button>
+            <Button Name="SportRight1" Canvas.Left="386.823" Canvas.Top="169" Width="90.204" Height="107" Background="#00DDDDDD" BorderBrush="#00707070" Foreground="#00000000" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="">
+                <Image Name="SportRight1_Image" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="81" VerticalAlignment="Top" Width="81" RenderTransformOrigin="0.5,0.5" Source="pack://application:,,,/Resources/Tennis-512x512.png"/>
+            </Button>
+            <Button Name="SportRight2" Canvas.Left="493.231" Canvas.Top="169" Width="90.204" Height="107" Background="#00DDDDDD" BorderBrush="#00707070" Foreground="#00000000" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="">
+                <Image Name="SportRight2_Image" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="81" VerticalAlignment="Top" Width="81" RenderTransformOrigin="0.5,0.5" Source="pack://application:,,,/Resources/Tennis-512x512.png"/>
+            </Button>
+            <Button Name="ArrowRight" Canvas.Left="625.233" Canvas.Top="150" Width="44.534" Height="155" Background="#00DDDDDD" BorderBrush="#00707070" Foreground="#00000000" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FlowDirection="RightToLeft" Click="ArrowRight_Click">
+                <Image Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="59.666" VerticalAlignment="Top" Width="59.666" RenderTransformOrigin="0.5,0.5" Source="pack://application:,,,/Resources/arrow_right_512x512.png"/>
+            </Button>
+            <Button Name="ArrowLeft" Canvas.Top="150" Width="44.534" Height="155" Background="#00DDDDDD" BorderBrush="#00707070" Foreground="#00000000" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" ToolTip="Volleyball" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FlowDirection="RightToLeft" Click="ArrowLeft_Click">
+                <Image Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="59.666" VerticalAlignment="Top" Width="59.666" RenderTransformOrigin="0.5,0.5" Source="pack://application:,,,/Resources/arrow_left_512x512.png"/>
+            </Button>
+        </Canvas>
+        <Canvas Name="Settings_Screen" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="512.789" Margin="-0.17,0,0,0" VerticalAlignment="Top" Width="665.34" Visibility="Hidden">
+            <Rectangle Height="180" Canvas.Left="69" Stroke="#00000000" Canvas.Top="159" Width="503" Fill="#3FFFFFFF"/>
+            <Label Grid.ColumnSpan="2" Content="Offline Database Path" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Width="305.439" FontSize="16" Canvas.Left="85" Canvas.Top="164"/>
+            <TextBox Name="DatabasePath" HorizontalAlignment="Center" Height="33.484" TextWrapping="Wrap" Text="Team Database Path" VerticalAlignment="Top" Width="314.406" Grid.ColumnSpan="2" BorderBrush="#3F000000" Padding="5,2,0,0" VerticalContentAlignment="Center" FontSize="14" Cursor="IBeam" Canvas.Left="85.096" Canvas.Top="199" ToolTip="Team Database Path, for offline use only" Background="White"/>
+            <Button Name="BrowseDatabase" Content="Browse" Click="Browse_TeamData_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="149.185" Height="33.484" Grid.ColumnSpan="2" Background="#FF5D3DFF" Foreground="White" FontSize="16" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Canvas.Left="406.645" Canvas.Top="199" ToolTip="Browse for Offline Team Database" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"/>
+            <Label Grid.ColumnSpan="2" Content="Settings" HorizontalAlignment="Left" VerticalAlignment="Top" Height="44" Width="345.66" FontSize="22" Canvas.Left="164" Canvas.Top="100" HorizontalContentAlignment="Center"/>
+            <Button Name="RemoveDatabase" Content="Remove Database" Click="RemoveDatabase_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="149.185" Height="33.484" Background="#FFCF102D" Foreground="White" FontSize="16" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Canvas.Left="85" Canvas.Top="245" ToolTip="Remove Offline Database" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"/>
+            <Button Name="DownloadDatabase" Content="Download Database" Click="DownloadDatabase_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="155.369" Height="33.484" Background="#FF5D3DFF" Foreground="White" FontSize="16" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Canvas.Left="242.288" Canvas.Top="245" ToolTip="Download Offline Database" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"/>
+            <Button Name="UpdateDatabase" Content="Update Database" Click="UpdateDatabase_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="149.185" Height="33.484" Background="#FF009946" Foreground="White" FontSize="16" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Canvas.Left="406.645" Canvas.Top="245" ToolTip="Update Offline Database" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"/>
+            <Label Name="DatabaseIdentifer" Content="Offline Database Linked : Version 1.0.0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Width="470.83" FontSize="16" Canvas.Left="85" Canvas.Top="289" VerticalContentAlignment="Center" BorderBrush="#3F000000" BorderThickness="1"/>
+            <CheckBox Content="Notify when Updates are available." Canvas.Left="85.216" Canvas.Top="349" FontSize="14" ClickMode="Press" Padding="4,0,0,0" VerticalContentAlignment="Center" Height="24" Width="290.568"/>
+            <CheckBox Content="Automatically Update Database" Canvas.Left="85.216" Canvas.Top="373" FontSize="14" ClickMode="Press" Padding="4,0,0,0" VerticalContentAlignment="Center" Height="24" Width="290.568"/>
+        </Canvas>
+        <Ellipse Name="MiddleCircle" Grid.ColumnSpan="2" Fill="Black" HorizontalAlignment="Left" Height="12" Margin="328,476.981,0,0" VerticalAlignment="Top" Width="12" Opacity="0.25" MouseDown="MiddleCircle_MouseDown" MouseEnter="Ellipse_MouseEnter" MouseLeave="Ellipse_MouseLeave"/>
+        <Ellipse Name="FirstCircle" Grid.ColumnSpan="2" Fill="Black" HorizontalAlignment="Left" Height="12" Margin="291.75,476.981,0,0" VerticalAlignment="Top" Width="12" MouseDown="FirstCircle_MouseDown" MouseEnter="Ellipse_MouseEnter" MouseLeave="Ellipse_MouseLeave"/>
+        <Ellipse Name="LastCircle" Grid.ColumnSpan="2" Fill="Black" HorizontalAlignment="Left" Height="12" Margin="364,476.981,0,0" VerticalAlignment="Top" Width="12" Opacity="0.25" MouseDown="LastCircle_MouseDown" MouseEnter="Ellipse_MouseEnter" MouseLeave="Ellipse_MouseLeave"/>
+        <Button Name="SettingsButt" Grid.Column="1" HorizontalAlignment="Left" Margin="613.83,461.031,0,0" VerticalAlignment="Top" Width="39" Height="39" Click="SettingsButt_Click" BorderBrush="#00000000" Foreground="#00000000" Background="#00000000" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+            <Image Name="Settings" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="37" RenderTransformOrigin="0.5,0.5" Source="pack://application:,,,/Resources/Settings-Cogwheel-512x512.png" Stretch="UniformToFill" ToolTip="Scoreman Settings."/>
+        </Button>
+    </Grid>
+</Window>
